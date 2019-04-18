@@ -4,19 +4,46 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "tsc": "tsc",
+    "build": "npm run clean && gulp resource-copy && npm run tsc --",
+    "rnstart": "react-native start --reset-cache",
+    "watch": "npm run build -- -w",
+    "emulator": "emulator @Nexus_5_API_26 -dns-server 8.8.8.8,8.8.4.4",
+    "clean": "rimraf lib",
+    "debugAndroid": "adb reverse tcp:8081 tcp:8081",
+    "cleancache": "sudo npm cache clean -f",
+    "cleanall": "yarn cache clean --force && rm -rf yarn.lock && npm cache clean --force && rm -rf node_modules/ && rm -rf package-lock.json && rm -rf ios/build && rm -rf android/app/build && git clean -xdf",
+    "clock:android": "adb shell \"date `date +%m%d%H%M%Y.%S`\"",
+    "pod": "cd ./ios && rm -rf Podfile.lock && rm -rf Pods && pod install",
+    "ios": "react-native run-ios",
+    "iosX": "react-native run-ios --simulator \"iPhone ${1:-X}\"",
+    "iosXr": "react-native run-ios --simulator \"iPhone ${1:-XR}\"",
+    "android": "react-native run-android",
+    "android:release": "npm run build && react-native run-android --variant=release"
   },
   "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-iconfont": "^9.1.0",
+    "gulp-typescript": "^4.0.2",
     "react": "16.8.3",
     "react-native": "0.59.4"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/runtime": "^7.4.3",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.13",
+    "@types/react-native": "^0.57.45",
+    "@types/react-test-renderer": "^16.8.1",
     "babel-jest": "^24.7.1",
     "jest": "^24.7.1",
     "metro-react-native-babel-preset": "^0.53.1",
-    "react-test-renderer": "16.8.3"
+    "react-test-renderer": "16.8.3",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.11.0",
+    "typescript": "^3.4.3",
+    "typings": "^2.1.1"
   },
   "jest": {
     "preset": "react-native"
