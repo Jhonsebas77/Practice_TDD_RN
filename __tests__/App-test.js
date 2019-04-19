@@ -1,13 +1,13 @@
-import { mount } from 'enzyme';
+import {shallow} from 'enzyme';
 import React from 'react';
-import App from '../lib/App';
+import App from '../src/App';
 
 describe('App', () => {
-  describe('#Text', () => {
-    it('should render the the text Welcome to React Native! in our first text tag', () => {
-      const app = mount(<App />);
-      const text = app.find('Text').at(0).text();
-      expect(text).toEqual('Welcome to React Native!');
+    describe('#Text', () => {
+        it('should render the word "Length" in testId rectangleLengthText', () => {
+            const app = shallow(<App/>);
+            const text = app.find("[testID='rectangleLengthText']").dive().text();
+            expect(text).toEqual('Length');
+        });
     });
-  });
 });

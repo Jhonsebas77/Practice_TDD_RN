@@ -1,13 +1,14 @@
-import {shallow} from 'enzyme';
 import React from 'react';
-import App from '../src/App';
-
-describe('App', () => {
-    describe('#Text', () => {
-        it('should render the word "Length" in testId rectangleLengthText', () => {
-            const app = shallow(<App/>);
-            const text = app.find("[testID='rectangleLengthText']").dive().text();
-            expect(text).toEqual('Length');
-        });
-    });
+import 'react-native';
+import 'react-native-mock-render/mock';
+import { JSDOM } from 'jsdom';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+global.document = new JSDOM();
+global.window = document.defaultView;
+Object.keys(document.defaultView).forEach((property) => {
+    if (typeof global[property] === 'undefined') {
+        global[property] = document.defaultView[property];
+    }
 });
+configure({ adapter: new Adapter() });
