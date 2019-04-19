@@ -1,21 +1,29 @@
 import React, { Component } from 'react'
-import { StatusBar, View, Text } from 'react-native'
-console.disableYellowBox = true
-console.error = (error: any) => error.apply
+import { StyleSheet, Text, View } from 'react-native'
 
-export default class App extends Component {
-  constructor(props: any) {
-    super(props)
-  }
+type Props = {}
+export default class App extends Component<Props> {
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <StatusBar
-          translucent={true}
-          backgroundColor='rgba(0, 0, 0, 0.2)'
-          barStyle='dark-content' />
-        <Text style={{ paddingTop: 20 }}>{'Hola Mundo'}</Text>
-      </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5
+  }
+})
