@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native'
+import { StyleSheet, Text, TextInput, View, TouchableHighlight } from 'react-native'
 
-export default class App extends Component<Props> {
+export default class App extends Component<any, any> {
   render() {
     return (
-      <View>
-        <Text testID={'rectangleLengthText'}>Length</Text>
+      <View style={styles.container}>
+        <Text testID={'rectangleLengthText'} style={styles.label}>Length</Text>
+        <TextInput testID={'rectangleLengthInput'} />
+        <Text testID={'rectangleWidthText'} style={styles.label}>Width</Text>
+        <TextInput testID={'rectangleWidthInput'} />
+
+        <TouchableHighlight testID={'rectangleAreaButton'} style={styles.button}>
+          <Text style={styles.textButton}>Calculate</Text>
+        </TouchableHighlight>
       </View>
     )
   }
@@ -18,18 +21,20 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    margin: 15
   },
-  welcome: {
+  button: {
+    backgroundColor: '#414f6f',
+    borderRadius: 10,
+    marginTop: 20,
+    padding: 15
+  },
+  textButton: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10
+    alignSelf: 'center',
+    color: '#ffffff'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
+  label: {
+    fontSize: 17
   }
 })
