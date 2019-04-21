@@ -11,6 +11,9 @@ export default class App extends Component<any, any> {
   render() {
     return (
       <View style={styles.background}>
+        <View style={styles.containerReservationStatus}>
+          <Text style={styles.title} testID={'titleReservationStatus'} >{'¡Casi listo! \n Estamos procesando tu pago'}</Text>
+        </View>
         <View style={styles.containerReservationCode}>
           <Text style={styles.textReserve} testID={'subtitleReservationCode'} >{'Tu codigo de reserva Bayou es'}</Text>
           <Text style={styles.idReserve} testID={'reserveCode'} >{this.state.reservation}</Text>
@@ -31,6 +34,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     height: 72
   },
+  containerReservationStatus: {
+    justifyContent: 'center',
+    marginTop: 50,
+    backgroundColor: '#ffffff',
+    height: 228
+  },
   idReserve: {
     fontFamily: 'Cochin',
     fontSize: 22,
@@ -44,5 +53,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 16,
     textAlign: 'center'
+  },
+  title: {
+    fontFamily: 'Cochin',
+    textAlign: 'center',
+    fontSize: 20,
+    lineHeight: 24,
+    letterSpacing: 0,
+    color: 'gray'
   }
 })
