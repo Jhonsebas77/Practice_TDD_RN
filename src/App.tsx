@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
 export default class App extends Component<any, any> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      reservation: 'ABC-DEF-GHJ'
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.idReserve} testID={'reserveCode'} >{'ABC-DEF-GHJ'}</Text>
+        <Text style={styles.idReserve} testID={'reserveCode'} >{this.state.reservation}</Text>
       </View>
     )
   }
