@@ -10,16 +10,26 @@ export default class App extends Component<any, any> {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.idReserve} testID={'reserveCode'} >{this.state.reservation}</Text>
+      <View style={styles.background}>
+        <View style={styles.containerReservationCode}>
+          <Text style={styles.textReserve} testID={'subtitleReservationCode'} >{'Tu codigo de reserva Bayou es'}</Text>
+          <Text style={styles.idReserve} testID={'reserveCode'} >{this.state.reservation}</Text>
+        </View>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
+  background: {
+    flex: 1,
+    backgroundColor: '#f8f8f8'
+  },
+  containerReservationCode: {
+    justifyContent: 'center',
+    marginTop: 50,
+    backgroundColor: '#ffffff',
+    height: 72
   },
   idReserve: {
     fontFamily: 'Cochin',
@@ -28,5 +38,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'rgb(23,158,164)',
     paddingTop: 6
+  },
+  textReserve: {
+    fontFamily: 'Cochin',
+    fontSize: 14,
+    lineHeight: 16,
+    textAlign: 'center'
   }
 })
