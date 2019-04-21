@@ -1,21 +1,63 @@
 import React, { Component } from 'react'
-import { StatusBar, View, Text } from 'react-native'
-console.disableYellowBox = true
-console.error = (error: any) => error.apply
+import { StyleSheet, Text, TextInput, View, TouchableHighlight } from 'react-native'
 
-export default class App extends Component {
-  constructor(props: any) {
+export default class App extends Component<any, any> {
+  constructor(props) {
     super(props)
+    this.state = {
+      length: 0,
+      width: 0
+    }
+    this.onUpdateLength = this.onUpdateLength.bind(this)
+    this.onUpdateWidth = this.onUpdateWidth.bind(this)
+    this.onUpdateArea = this.onUpdateArea.bind(this)
+  }
+
+  onUpdateLength(length) {
+    this.setState({ length })
+  }
+
+  onUpdateWidth(width) {
+    this.setState({ width })
+  }
+
+  onUpdateArea() {
+    const area = this.state.length * this.state.width
+    this.setState({ area })
   }
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <StatusBar
-          translucent={true}
-          backgroundColor='rgba(0, 0, 0, 0.2)'
-          barStyle='dark-content' />
-        <Text style={{ paddingTop: 20 }}>{'Hola Mundo'}</Text>
+      <View style={styles.container}>
+        <Text testID={'rectangleLengthText'} style={styles.label}>Length</Text>
+        <TextInput testID={'rectangleLengthInput'} onChangeText={this.onUpdateLength} />
+        <Text testID={'rectangleWidthText'} style={styles.label}>Width</Text>
+        <TextInput testID={'rectangleWidthInput'} onChangeText={this.onUpdateWidth} />
+        <TouchableHighlight testID={'rectangleAreaButton'} style={styles.button} onPress={this.onUpdateArea}>
+          <Text style={styles.textButton}>Calculate</Text>
+        </TouchableHighlight>
+        <Text testID={'rectangleAreaResult'}>{this.state.area}</Text>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    margin: 15
+  },
+  button: {
+    backgroundColor: '#414f6f',
+    borderRadius: 10,
+    marginTop: 20,
+    padding: 15
+  },
+  textButton: {
+    fontSize: 20,
+    alignSelf: 'center',
+    color: '#ffffff'
+  },
+  label: {
+    fontSize: 17
+  }
+})
