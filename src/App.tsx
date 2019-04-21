@@ -12,7 +12,10 @@ export default class App extends Component<any, any> {
     return (
       <View style={styles.background}>
         <View style={styles.containerReservationStatus}>
-          <Text style={styles.title} testID={'titleReservationStatus'} >{'¡Casi listo! \n Estamos procesando tu pago'}</Text>
+          <Text style={styles.titleReserveCode} testID={'titleReservationStatus'} >{'¡Casi listo! \n Estamos procesando tu pago'}</Text>
+          <Text style={styles.subTitleReserveCode} testID={'subTitleReservationStatus'} >
+            {'Tu reserva está pendiente, te contactaremos \n por email en las próximas 24hs. \nRecordá chequear tu carpeta de spam.'}
+          </Text>
         </View>
         <View style={styles.containerReservationCode}>
           <Text style={styles.textReserve} testID={'subtitleReservationCode'} >{'Tu codigo de reserva Bayou es'}</Text>
@@ -41,7 +44,7 @@ const styles = StyleSheet.create({
     height: 228
   },
   idReserve: {
-    fontFamily: 'Cochin',
+    fontFamily: 'arial',
     fontSize: 22,
     lineHeight: 24,
     textAlign: 'center',
@@ -49,17 +52,27 @@ const styles = StyleSheet.create({
     paddingTop: 6
   },
   textReserve: {
-    fontFamily: 'Cochin',
+    fontFamily: 'arial',
     fontSize: 14,
     lineHeight: 16,
     textAlign: 'center'
   },
-  title: {
-    fontFamily: 'Cochin',
+  subTitleReserveCode: {
+    fontFamily: 'arial',
+    fontSize: 16,
+    paddingTop: 7,
+    lineHeight: 20,
+    paddingLeft: 20,
+    letterSpacing: 0,
+    color: 'gray',
+    textAlign: 'center'
+  },
+  titleReserveCode: {
+    fontFamily: 'arial',
     textAlign: 'center',
     fontSize: 20,
     lineHeight: 24,
     letterSpacing: 0,
-    color: 'gray'
+    color: 'black'
   }
 })
